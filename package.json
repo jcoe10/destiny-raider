@@ -1,0 +1,35 @@
+{
+  "name": "destiny-raider",
+  "version": "1.0.0",
+  "description": "An app that utilizes express and mySQL.",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcoe10/destiny-raider.git"
+  },
+  "keywords": [
+    "app",
+    "express",
+    "mySQL",
+    "destiny",
+    "raider",
+    "server"
+  ],
+  "author": "JAcob Coe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcoe10/destiny-raider/issues"
+  },
+  "homepage": "https://github.com/jcoe10/destiny-raider#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.10",
+    "mysql": "^2.14.1"
+  }
+}
