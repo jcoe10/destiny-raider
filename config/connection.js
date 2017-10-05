@@ -1,3 +1,23 @@
-//setup the code to connect Node to MySQL.
+// Require mysql npm
+var mysql = require('mysql');
 
-//Export the connection.
+// Connect mysql
+var connect;
+
+
+if(process.env.JAWSDB_URL){
+	//if deployed to heroku...
+  connect = mysql.createConnection(process.env.JAWSDB_URL);
+}else{
+	//else deploy locally
+  connect = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'iforgotit', 
+    database : 'destinyRaidDB'
+  });
+}
+
+
+// Export the Connection
+module.exports = connect;

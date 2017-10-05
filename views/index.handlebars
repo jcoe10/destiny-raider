@@ -1,3 +1,42 @@
-{{!-- Setup the index.handlebars to have the template that Handlebars can render onto.
+<h1>Beat the Raid!</h1>
 
-Create a button in index.handlebars that will submit the user input into the database. --}}
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col s6">
+        {{#each raids}}
+          {{#unless this.defeated}}
+            <div>
+              <form action="/raids/{{this.id}}?_method=PUT" method="POST">
+                <button type="submit" class='raidAvailable'> {{this.raid_name}}</button>
+              </form>
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+
+      <div class="col s6">
+        {{#each raids}}
+          {{#if this.defeated}}
+            <div class='raidBeaten'>
+              <div>
+                {{this.raid_name}}
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</main>
+
+<h2>ADD A NEW RAID</h2>
+
+<div class="row">
+  <div class="col s12">
+    <form action="/raids" method="POST">
+      <input type="text" id="name" name="raid_name" placeholder="Epic Raid">
+      <button type="submit" class="addRaidButton">Add The Raid</button>
+    </form>
+  </div>
+</div>

@@ -1,11 +1,64 @@
-var connect = require("./connection");
+// Require the file connection
+var connection = require('../config/connection.js');
 
-selectAll();
-insertOne();
-updateOne();
+// Function so you can use mysql
+function printQ(num) {
+	var arr = [];
 
-//create the methods that will execute the necessary MySQL commands 
-//in the controllers. These are the methods you will need to use in 
-//order to retrieve and store data in your database.
+	for (var i = 0; i < num; i++) {
+		arr.push('?')
+	};
 
-//Export the ORM object in module.exports.
+	return arr.toString();
+};
+
+function objToSql(ob) {
+	var arr = [];
+
+	for (var key in ob) {
+		arr.push(key + '=' + ob[key]);
+	};
+
+	return arr.toString();
+};
+
+var orm = {
+	all: function (tableInput, cb) {
+		var queryString = 'SELECT * FROM ' + tableInput;
+
+		connection.query(queryString, function (err, result) {
+			if (err) throw err;
+			cb(result);
+		});
+	},
+	create: function (table, col, vals, cb) {
+		var queryString = 'INSERT INTO ' + table;
+		queryString = queryString + ' (';
+		queryString = queryString + col.toString();
+		queryString = queryString + ') ';
+		queryString = queryString + 'VALUES (';
+		queryString = queryString + printQ(vals.length);
+		queryString = queryString + ') ';
+
+		connection.query(queryString, vals, function (err, result) {
+			if (err) throw err;
+			cb(result);
+		});
+	},
+	update: function (table, objColVals, condition, cb) {
+		var queryString = 'UPDATE ' + table;
+		queryString = queryString + ' SET ';
+		queryString = queryString + objToSql(objColVals);
+		queryString = queryString + ' WHERE ';
+		queryString = queryString + c;
+
+		console.log(queryString);
+
+		connection.query(queryString, function (err, result) {
+			if (err) throw err;
+			cb(result);
+		});
+	}
+};
+
+module.exports = orm;

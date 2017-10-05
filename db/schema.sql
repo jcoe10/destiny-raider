@@ -1,17 +1,15 @@
---DROP DATABASE IF IT EXISTS--
-DROP DATABASE IF EXISTS destiny_db;
+-- Create the database --
+CREATE DATABASE destinyRaidDB;
 
---MAKE THE DATABASE--
-CREATE DATABASE destiny_db;
+USE destinyRaidDB;
 
---USE THE DATABASE--
-USE destiny_db; 
-
---CREATE A TABLE--
-CREATE TABLE raider_db(
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `raid_name` VARCHAR(200) NOT NULL,
-    `defeated` BOOLEAN DEFAULT true,
-    `date_won` TIMESTAMP YYYY-MM-DD HH:MM:SS,
-    PRIMARY KEY (id)
+-- Create a table for the raids --
+CREATE TABLE raids
+(
+	id int NOT NULL AUTO_INCREMENT,
+	raid_name varchar(255) NOT NULL,
+	defeated BOOLEAN DEFAULT false,
+  	time_comp TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  	date_comp DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  	PRIMARY KEY(id)
 );
