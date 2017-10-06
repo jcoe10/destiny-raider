@@ -6,7 +6,7 @@ var orm = require('../config/orm.js');
 var destiny = {
   // Select all table entries
  selectAll: function(cb) {
-    orm.selectAll('raids', function(res) {
+    orm.selectAll('raids', function(req, res, data) {
       cb(res);
     });
   },
@@ -18,9 +18,9 @@ var destiny = {
     });
   },
 
-  // The objColVals is an object specifying columns as object keys with associated values
+  
   updateOne: function(objColVals, condition, cb) {
-    orm.updateOne('raids', objColVals, c, function(res) {
+    orm.updateOne('raids', objColVals, condition, function(res) {
       cb(res);
     });
   }

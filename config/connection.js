@@ -13,7 +13,7 @@ if(process.env.JAWSDB_URL){
   connect = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'iforgotit', 
+    password : '', 
     database : 'destinyRaidDB'
   });
 }
