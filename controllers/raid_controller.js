@@ -1,12 +1,12 @@
 // Pull in required dependencies
 var express = require('express');
-var r = express.Router();
+var route = express.Router();
 
 // Import the model 
 let destiny = require('../models/destiny.js');
 
 // Create the routes and associated logic
-r.get('/', function(req, res) {
+route.get('/', function(req, res) {
   destiny.selectAll(function(data) {
     var hbsObject = {
       raids: data
@@ -16,7 +16,7 @@ r.get('/', function(req, res) {
   });
 });
 
-r.post('/raids', function(req, res) {
+route.post('/raids', function(req, res) {
   destiny.insertOne([
     'raid_name'
   ], [
@@ -26,7 +26,7 @@ r.post('/raids', function(req, res) {
   });
 });
 
-r.put('/raids/:id', function(req, res) {
+route.put('/raids/:id', function(req, res) {
   var c = 'id = ' + req.params.id;
 
   destiny.updateOne({
@@ -37,4 +37,4 @@ r.put('/raids/:id', function(req, res) {
 });
 
 // Export routes for server.js to use.
-module.exports = r;
+module.exports = route;
