@@ -14,3 +14,16 @@ As they complete them they move over to the other side so they are complete and 
 
 ![destiny3](https://user-images.githubusercontent.com/29211238/31340845-7a26fb98-acd5-11e7-96bc-da895d2bf8b4.gif)
 
+ Technologies Used:
+
+    -Node
+    -JavaScript
+    -Handlebars
+    -NPM Packages
+    -MySQL
+    -Workbench
+    -Heroku
+    -Nodemon
+
+
+    
